@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <exception>
+#include "Bureaucrat.hpp"
 
 class Form
 {
@@ -13,9 +14,11 @@ class Form
 		~Form();
 
 		bool getSigned() const;
-		const int getSignedGrade() const;
-		const int getExecuteGrade() const;
+		const int getGradeSign() const;
+		const int getGradeExecute() const;
 		const std::string getName() const;
+
+		void beSigned(Bureaucrat b) const;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -23,7 +26,6 @@ class Form
 				GradeTooHighException();
 				virtual const char *what() const throw();
 		};
-
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -33,7 +35,7 @@ class Form
 
 	private:
 		const std::string _name;
-		const int _gradeSigned;
+		const int _gradeSign;
 		const int _gradeExecute;
 		bool _signed;
 };

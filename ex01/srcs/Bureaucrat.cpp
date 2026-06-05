@@ -1,6 +1,6 @@
 #include "../includes/Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("burea1") , _grade(15) {}
+Bureaucrat::Bureaucrat() : _name("bureau1") , _grade(15) {}
 Bureaucrat::~Bureaucrat() {}
 int Bureaucrat::getGrade() const { return (this->_grade); }
 const std::string Bureaucrat::getName() const { return this->_name; }
