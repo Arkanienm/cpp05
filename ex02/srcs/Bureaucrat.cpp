@@ -1,10 +1,10 @@
 #include "../includes/Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("burea1") , _grade(15) {}
+Bureaucrat::Bureaucrat() : _name("bureau1") , _grade(150) {}
 Bureaucrat::~Bureaucrat() {}
 int Bureaucrat::getGrade() const { return (this->_grade); }
-const std::string Bureaucrat::getName() const { return this->_name; }
-Bureaucrat::Bureaucrat(const Bureaucrat &src) : _name(src._name), _grade(src._grade) {}
+const std::string Bureaucrat::getName() const { return (this->_name); }
+Bureaucrat::Bureaucrat(const Bureaucrat &src) : _name(src._name), _grade(src._grade){}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) , _grade(grade)
 {
@@ -54,4 +54,17 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {
 	out << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return out;
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		executeForm(form);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception const & e)
+	{
+		std::cout << "Error : " << e.what() << std::endl;
+	}
 }

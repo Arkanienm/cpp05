@@ -1,5 +1,6 @@
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
 
 int	main()
 {
@@ -7,10 +8,8 @@ int	main()
 	std::cout << std::endl;
 
 	Bureaucrat b("boby1", 15);
-	Form f("form1", 15, 7);
-	std::cout << f << std::endl;
-	f.signForm(b);
-	std::cout << std::endl;
+	AForm f("form1", 15, 7);
+	PresidentialPardonForm
 
 	std::cout << b.getGrade() << " Decrementing b to ";
 	--b;

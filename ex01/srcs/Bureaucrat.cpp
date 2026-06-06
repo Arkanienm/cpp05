@@ -1,10 +1,10 @@
 #include "../includes/Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("bureau1") , _grade(15) {}
+Bureaucrat::Bureaucrat() : _name("bureau1") , _grade(150) {}
 Bureaucrat::~Bureaucrat() {}
 int Bureaucrat::getGrade() const { return (this->_grade); }
-const std::string Bureaucrat::getName() const { return this->_name; }
-Bureaucrat::Bureaucrat(const Bureaucrat &src) { *this = src; }
+const std::string Bureaucrat::getName() const { return (this->_name); }
+Bureaucrat::Bureaucrat(const Bureaucrat &src) : _name(src._name), _grade(src._grade){}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) , _grade(grade)
 {
