@@ -1,8 +1,11 @@
 #include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/Bureaucrat.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy1", 72, 45) {}
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) : AForm(src) {}
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy1", 72, 45) , _target("target") {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Robotomy1", 72, 45) , _target(target) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src) : AForm(src) , _target(src._target) {}
 RobotomyRequestForm::~RobotomyRequestForm() {}
+
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &src)
 {
@@ -13,10 +16,13 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->_signed)
-	{
-		std::cout << "the robotomy failed for " << _target << "beacause , ";
+	if (executor.getGrade() > this->_gradeExecute)
 		throw GradeTooLowException();
-	}
-	std::cout << "*schlkkkkkk , " << _target << "has been robotomized successfully 50% of the time." << std::endl;
+	if (_signed == false)
+		throw AForm::IsNotSigned();
+	std::cout << "*schlkkkkkk , " << _target << std::endl;
+	if (rand() % 2 == 0)
+		std::cout << _target << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << "The robotomy failed on " << _target << std::endl;
 }

@@ -1,11 +1,15 @@
 #include "../includes/AForm.hpp"
 
+#include "../includes/Bureaucrat.hpp"
+
 AForm::AForm() : _name("Form1") , _gradeSign(150) , _gradeExecute(150) , _signed(false) {}
 AForm::~AForm() {}
 AForm::AForm(const AForm &src) : _name(src._name) , _gradeSign(src._gradeSign) , _gradeExecute(src._gradeExecute) , _signed(src._signed) {}
 AForm::AForm(std::string name, int gradeSign, int gradeExecute) : _name(name), _gradeSign(gradeSign), _gradeExecute(gradeExecute) {}
 AForm::GradeTooHighException::GradeTooHighException(){}
 AForm::GradeTooLowException::GradeTooLowException(){}
+
+AForm::IsNotSigned::IsNotSigned() {}
 
 const std::string AForm::getName() const { return _name; }
 int AForm::getGradeSign() const { return _gradeSign; }
@@ -44,6 +48,11 @@ const char *AForm::GradeTooLowException::what() const throw()
 	return "The grade is too low";
 }
 
+const char *AForm::IsNotSigned::what() const throw()
+{
+	return "The form is not signed";
+}
+
 AForm& AForm::operator=(const AForm &src)
 {
 	if (this != &src)
@@ -53,6 +62,6 @@ AForm& AForm::operator=(const AForm &src)
 
 std::ostream &operator<<(std::ostream &out, const AForm &form)
 {
-	out << form.getName() << " Grade to sign is " << form.getGradeSign() << " is signed ? " << form.getSigned() << std::endl;
+	out << form.getName() << " Grade to sign is " << form.getGradeSign() << " is signed ? " << form.getSigned() << " Grade to execute is " << form.getGradeExecute() << std::endl;
 	return out;
 }

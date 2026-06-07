@@ -3,7 +3,8 @@
 #include <string>
 #include <iostream>
 #include <exception>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class AForm
 {
@@ -21,7 +22,7 @@ class AForm
 
 		void beSigned(const Bureaucrat& b);
 		void signForm(const Bureaucrat& b);
-		virtual void execute(Bureaucrat const & executor) const = 0;
+		virtual void execute(Bureaucrat const& executor) const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -35,7 +36,12 @@ class AForm
 				GradeTooLowException();
 				virtual const char *what() const throw();
 		};
-
+		class IsNotSigned : public std::exception
+		{
+		public:
+			IsNotSigned();
+			virtual const char *what() const throw();
+		};
 	protected:
 		const std::string _name;
 		const int _gradeSign;
