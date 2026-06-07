@@ -5,7 +5,7 @@
 AForm::AForm() : _name("Form1") , _gradeSign(150) , _gradeExecute(150) , _signed(false) {}
 AForm::~AForm() {}
 AForm::AForm(const AForm &src) : _name(src._name) , _gradeSign(src._gradeSign) , _gradeExecute(src._gradeExecute) , _signed(src._signed) {}
-AForm::AForm(std::string name, int gradeSign, int gradeExecute) : _name(name), _gradeSign(gradeSign), _gradeExecute(gradeExecute), _signed(false){}
+AForm::AForm(std::string name, int gradeSign, int gradeExecute) : _name(name), _gradeSign(gradeSign), _gradeExecute(gradeExecute), _signed(false) {}
 AForm::GradeTooHighException::GradeTooHighException(){}
 AForm::GradeTooLowException::GradeTooLowException(){}
 

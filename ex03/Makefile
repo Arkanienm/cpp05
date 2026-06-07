@@ -1,12 +1,13 @@
-NAME     = ExecutionFormUp
+NAME     = InternFormUp
 CXX      = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I. -g
 
 SRCS_DIR = srcs/
 OBJ_DIR  = .obj/
 
 SRCS     = $(SRCS_DIR)main.cpp $(SRCS_DIR)Bureaucrat.cpp $(SRCS_DIR)AForm.cpp \
- 		   $(SRCS_DIR)PresidentialPardonForm.cpp $(SRCS_DIR)RobotomyRequestForm.cpp $(SRCS_DIR)ShrubberyCreationForm.cpp
+ 		   $(SRCS_DIR)PresidentialPardonForm.cpp $(SRCS_DIR)RobotomyRequestForm.cpp \
+ 		   $(SRCS_DIR)ShrubberyCreationForm.cpp $(SRCS_DIR)Intern.cpp
 
 OBJ     = $(SRCS:$(SRCS_DIR)%.cpp=$(OBJ_DIR)%.o)
 
